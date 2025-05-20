@@ -41,25 +41,35 @@ void dijkstra(vector<vector<int>>& graph, int start) {
 
     // Output shortest path results
     for (int i = 0; i < V; ++i) {
-        cout << "Source(" << start + 1 << ") to node " << i + 1 << " cost = " << value[i] << endl;
+        cout << "Source(" << start + 1 << ") to node " << i + 1 << " cost = ";
+        if (value[i] == INT_MAX)
+            cout << "INF" << endl;
+        else
+            cout << value[i] << endl;
     }
 }
 
 int main() {
-    // Initialize graph with INT_MAX to represent infinity
-    vector<vector<int>> graph(V, vector<int>(V, INT_MAX));
+    vector<vector<int>> graph(V, vector<int>(V));
+    cout << "Enter adjacency matrix (" << V << " x " << V << "), use 0 for no edge:\n";
+    for (int i = 0; i < V; ++i) {
+        for (int j = 0; j < V; ++j) {
+            int w;
+            cin >> w;
+            if (i == j)
+                graph[i][j] = 0;
+            else if (w == 0)
+                graph[i][j] = INT_MAX;
+            else
+                graph[i][j] = w;
+        }
+    }
 
-    // Define edges and weights (just like the Python version)
-    graph[0][0] = 0;
-    graph[1][0] = 300; graph[1][1] = 0;
-    graph[2][0] = 1000; graph[2][1] = 800; graph[2][2] = 0;
-    graph[3][2] = 1200; graph[3][3] = 0;
-    graph[4][3] = 1500; graph[4][4] = 0; graph[4][5] = 250;
-    graph[5][3] = 1000; graph[5][5] = 0; graph[5][6] = 900; graph[5][7] = 1400;
-    graph[6][6] = 0; graph[6][7] = 1000;
-    graph[7][0] = 1700; graph[7][7] = 0;
+    int start;
+    cout << "Enter starting vertex (1-" << V << "): ";
+    cin >> start;
+    --start; // Convert to 0-based index
 
-    int start = 4; // Starting vertex (index 4 means node 5)
     dijkstra(graph, start);
 
     return 0;

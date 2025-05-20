@@ -43,8 +43,8 @@ int main() {
     int V;
     cout << "Enter number of vertices: ";
     cin >> V;
-    /*
-    vector<vector<int>> graph = {
+    
+   /* vector<vector<int>> graph = {
         {0, 11, 13, 0, 2, 0, 0, 0},
         {11, 0, 15, 8, 12, 0, 6, 0},
         {13, 15, 0, 0, 0, 0, 0, 0},
@@ -53,8 +53,8 @@ int main() {
         {0, 0, 0, 0, 5, 0, 0, 7},
         {0, 6, 0, 10, 0, 0, 0, 21},
         {0, 0, 0, 17, 0, 7, 21, 0}
-    };
-    */
+    };*/
+    
 
     vector<vector<int>> graph(V, vector<int>(V));
     cout << "Enter adjacency matrix (enter 0 if no edge):\n";
